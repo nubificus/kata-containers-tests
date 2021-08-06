@@ -96,6 +96,11 @@ case "${CI_JOB}" in
 		echo "INFO: Running Kubernetes tests with Firecracker"
 		sudo -E PATH="$PATH" bash -c "make kubernetes"
 		;;
+	"FIRECRACKER_JAILER")
+		echo "INFO: Running Kubernetes tests with Firecracker (with jailer)"
+		sudo sed -i -e 's/#jailer_path/jailer_path/' "/usr/share/defaults/kata-containers/configuration.toml"
+		sudo -E PATH="$PATH" bash -c "make kubernetes"
+		;;
 	"VFIO")
 		echo "INFO: Running VFIO functional tests"
 		sudo -E PATH="$PATH" CRI_RUNTIME="containerd" bash -c "make vfio"
