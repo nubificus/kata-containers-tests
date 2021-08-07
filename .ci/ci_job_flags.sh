@@ -185,6 +185,13 @@ case "${CI_JOB}" in
 	export KATA_HYPERVISOR="firecracker"
 	export KUBERNETES="yes"
 	;;
+"FIRECRACKER_JAILER")
+	init_ci_flags
+	export CRI_CONTAINERD="yes"
+	export CRI_RUNTIME="containerd"
+	export KATA_HYPERVISOR="firecracker"
+	export KUBERNETES="yes"
+	;;
 "VFIO")
 	init_ci_flags
 	export CRI_CONTAINERD="yes"
